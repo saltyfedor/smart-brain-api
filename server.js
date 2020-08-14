@@ -20,8 +20,8 @@ const db = require('knex')({
 
 app.use(express.json());
 app.use(cors());
-
-app.listen(3001, () => {
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
 });
 
 app.post('/signin', (req, res) => {
