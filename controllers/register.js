@@ -20,7 +20,9 @@ const handleRegister = (req, res, db, bcrypt)=>{
                 .then(user => res.json(user[0]))                
             })
         .then(trx.commit)
-        .catch(trx.rollback)           
+        .catch(err=> {
+            res.json(err)           
+            trx.rollback})           
         })
     }else{
         res.status(400).json('bad credentials')
